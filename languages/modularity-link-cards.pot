@@ -1,0 +1,129 @@
+# Copyright (C) 2025 Starter
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: Modularity LinkCards 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modularity-link-cards\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-12-22T13:08:57+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: modularity-link-cards\n"
+
+#. Plugin Name of the plugin
+#: modularity-link-cards.php
+msgid "Modularity LinkCards"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: modularity-link-cards.php
+msgid "https://github.com/helsingborg-stad/modularity-link-cards"
+msgstr ""
+
+#. Description of the plugin
+#: modularity-link-cards.php
+msgid "A link-cards for creating Modularity modules."
+msgstr ""
+
+#. Author of the plugin
+#: modularity-link-cards.php
+msgid "Starter"
+msgstr ""
+
+#. Author URI of the plugin
+#: modularity-link-cards.php
+msgid "https://github.com/helsingborg-stad"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:8
+msgid "LinkCards Module"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:12
+msgid "Columns"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:16
+msgid "Number of columns in the grid."
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:25
+msgid "2 columns"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:26
+msgid "3 columns"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:27
+msgid "4 columns"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:41
+msgid "Cards"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:45
+msgid "Add link cards to display."
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:58
+msgid "Add Card"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:63
+msgid "Title"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:84
+msgid "Description"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:105
+msgid "Link"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:123
+msgid "Icon"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:127
+msgid "Select an icon for the card."
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:141
+msgid "Color Theme"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:145
+msgid "Select a color theme for the card icon."
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:154
+msgid "Brown (bg: #764a0f, icon: #e7d6bf)"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:155
+msgid "Dark Green (bg: #233b1f, icon: #a0b990)"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:156
+msgid "Light Green (bg: #a0b990, icon: #2b512b)"
+msgstr ""
+
+#: source/php/AcfFields/php/link-cards-module.php:157
+msgid "Gold (bg: #ba8a48, icon: #5f3a0b)"
+msgstr ""
+
+#: source/php/Module/LinkCards.php:18
+#: source/php/Module/LinkCards.php:19
+msgid "Link Cards"
+msgstr ""
+
+#: source/php/Module/LinkCards.php:20
+msgid "A grid of clickable link cards with icons."
+msgstr ""
