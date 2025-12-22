@@ -53,12 +53,17 @@ class LinkCards extends \Modularity\Module
         }
 
         return array_map(function ($card) {
+            // Handle both camelCase and snake_case field names
+            $iconBgColor = $card['iconBackgroundColor'] 
+                ?? $card['icon_background_color'] 
+                ?? '#7B5B3C';
+            
             return [
                 'title' => $card['title'] ?? '',
                 'description' => $card['description'] ?? '',
                 'link' => $card['link'] ?? [],
                 'icon' => $card['icon'] ?? '',
-                'iconBackgroundColor' => $card['iconBackgroundColor'] ?? '#7B5B3C',
+                'iconBackgroundColor' => $iconBgColor,
             ];
         }, $cards);
     }
@@ -87,15 +92,6 @@ class LinkCards extends \Modularity\Module
     public function template(): string
     {
         return 'link-cards.blade.php';
-    }
-
-    /**
-     * Style - Register & adding css
-     * @return void
-     */
-    public function style(): void
-    {
-        $this->wpEnqueue?->add('css/modularity-link-cards.css', [], '1.0.0');
     }
 
     /**
