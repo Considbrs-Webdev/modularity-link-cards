@@ -1,5 +1,9 @@
-<a href="{{ $card['link']['url'] ?? '#' }}" target="{{ $card['link']['target'] ?? '_self' }}" class="mod-link-cards__card"
-    @if (($card['link']['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif>
+<{{ $card['tag'] }}
+    @if ($card['hasLink']) href="{{ $card['link']['url'] }}"
+        target="{{ $card['link']['target'] ?? '_self' }}"
+        @if (($card['link']['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif
+    @endif
+    class="mod-link-cards__card">
     <div class="mod-link-cards__icon-wrapper" style="background-color: {{ $card['iconBackgroundColor'] }};">
         @if (!empty($card['icon']))
             @icon([
@@ -31,4 +35,4 @@
             @endtypography
         @endif
     </div>
-</a>
+    </{{ $card['tag'] }}>

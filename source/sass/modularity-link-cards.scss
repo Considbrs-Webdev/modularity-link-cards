@@ -44,10 +44,14 @@
         background-color: transparent;
         text-decoration: none;
         color: inherit;
-        transition: box-shadow 0.2s ease;
         border-radius: 12px;
         overflow: hidden;
         min-height: 5.5rem;
+    }
+    
+    // Hover/focus styles only for linked cards
+    a#{&}__card {
+        transition: box-shadow 0.2s ease;
         
         &:hover,
         &:focus {

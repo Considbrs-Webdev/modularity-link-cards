@@ -82,10 +82,15 @@ class LinkCards extends \Modularity\Module
             $iconColor = '#' . (self::COLOR_THEMES[$colorTheme] ?? 'e7d6bf');
             $iconClass = self::ICON_COLOR_CLASSES[$colorTheme] ?? 'mod-link-cards__icon--brown';
             
+            $link = $card['link'] ?? [];
+            $hasLink = !empty($link['url']);
+            
             return [
                 'title' => $card['title'] ?? '',
                 'description' => $card['description'] ?? '',
-                'link' => $card['link'] ?? [],
+                'link' => $link,
+                'hasLink' => $hasLink,
+                'tag' => $hasLink ? 'a' : 'div',
                 'icon' => $card['icon'] ?? '',
                 'iconBackgroundColor' => $bgColor,
                 'iconColor' => $iconColor,
