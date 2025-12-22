@@ -45,6 +45,7 @@
         text-decoration: none;
         color: inherit;
         transition: box-shadow 0.2s ease;
+        border-radius: 12px;
         overflow: hidden;
         min-height: 5.5rem;
         
@@ -89,7 +90,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 1rem 1.5rem;
+        padding: 1.5rem 1.5rem;
     }
     
     // Title

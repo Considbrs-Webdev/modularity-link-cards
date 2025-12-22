@@ -134,11 +134,11 @@
                     },
                     {
                         "key": "field_67892a1b3c4d5e76",
-                        "label": "Icon Background Color",
-                        "name": "icon_background_color",
+                        "label": "Color Theme",
+                        "name": "color_theme",
                         "aria-label": "",
-                        "type": "color_picker",
-                        "instructions": "Background color for the icon.",
+                        "type": "select",
+                        "instructions": "Select a color theme for the card icon.",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
@@ -146,12 +146,19 @@
                             "class": "",
                             "id": ""
                         },
-                        "default_value": "#7B5B3C",
-                        "enable_opacity": 0,
-                        "return_format": "string",
-                        "custom_palette_source": "",
-                        "palette_colors": "",
-                        "show_color_wheel": true,
+                        "choices": {
+                            "764a0f": "Brown (bg: #764a0f, icon: #e7d6bf)",
+                            "233b1f": "Dark Green (bg: #233b1f, icon: #a0b990)",
+                            "a0b990": "Light Green (bg: #a0b990, icon: #2b512b)",
+                            "ba8a48": "Gold (bg: #ba8a48, icon: #5f3a0b)"
+                        },
+                        "default_value": "764a0f",
+                        "return_format": "value",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": "",
                         "parent_repeater": "field_67892a1b3c4d5e71"
                     }
                 ]

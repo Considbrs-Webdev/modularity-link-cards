@@ -41,6 +41,16 @@ class LinkCards extends \Modularity\Module
     }
 
     /**
+     * Color theme mappings: background color => icon color
+     */
+    private const COLOR_THEMES = [
+        '764a0f' => 'e7d6bf',
+        '233b1f' => 'a0b990',
+        'a0b990' => '2b512b',
+        'ba8a48' => '5f3a0b',
+    ];
+
+    /**
      * Prepare cards data for the template
      * 
      * @param array $cards Raw cards from ACF
@@ -54,16 +64,20 @@ class LinkCards extends \Modularity\Module
 
         return array_map(function ($card) {
             // Handle both camelCase and snake_case field names
-            $iconBgColor = $card['iconBackgroundColor'] 
-                ?? $card['icon_background_color'] 
-                ?? '#7B5B3C';
+            $colorTheme = $card['colorTheme'] 
+                ?? $card['color_theme'] 
+                ?? '764a0f';
+            
+            $bgColor = '#' . $colorTheme;
+            $iconColor = '#' . (self::COLOR_THEMES[$colorTheme] ?? 'e7d6bf');
             
             return [
                 'title' => $card['title'] ?? '',
                 'description' => $card['description'] ?? '',
                 'link' => $card['link'] ?? [],
                 'icon' => $card['icon'] ?? '',
-                'iconBackgroundColor' => $iconBgColor,
+                'iconBackgroundColor' => $bgColor,
+                'iconColor' => $iconColor,
             ];
         }, $cards);
     }

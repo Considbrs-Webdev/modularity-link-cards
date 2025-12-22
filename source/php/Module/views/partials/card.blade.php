@@ -2,7 +2,8 @@
     $linkUrl = $card['link']['url'] ?? '#';
     $linkTarget = $card['link']['target'] ?? '_self';
     $hasIcon = !empty($card['icon']);
-    $iconBgColor = $card['iconBackgroundColor'] ?? '#7B5B3C';
+    $iconBgColor = $card['iconBackgroundColor'] ?? '#764a0f';
+    $iconColor = $card['iconColor'] ?? '#e7d6bf';
 @endphp
 
 <a 
@@ -18,7 +19,7 @@
             @icon([
                 'icon' => $card['icon'],
                 'size' => 'lg',
-                'color' => 'white'
+                'color' => $iconColor
             ])
             @endicon
         @endif
