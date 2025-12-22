@@ -1,7 +1,9 @@
 <?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+
+if (function_exists('acf_add_local_field_group')) {
+
+    acf_add_local_field_group(array(
     'key' => 'group_67892a1b3c4d5e6f',
     'title' => __('LinkCards Module', 'modularity-link-cards'),
     'fields' => array(
@@ -121,7 +123,7 @@
                     'label' => __('Icon', 'modularity-link-cards'),
                     'name' => 'icon',
                     'aria-label' => '',
-                    'type' => 'icon_field',
+                    'type' => 'icon',
                     'instructions' => __('Select an icon for the card.', 'modularity-link-cards'),
                     'required' => 0,
                     'conditional_logic' => 0,
@@ -130,6 +132,8 @@
                         'class' => '',
                         'id' => '',
                     ),
+                    'default_value' => '',
+                    'placeholder' => '',
                     'parent_repeater' => 'field_67892a1b3c4d5e71',
                 ),
                 4 => array(
@@ -184,4 +188,5 @@
     'show_in_rest' => 0,
     'display_title' => '',
 ));
-}
+
+}

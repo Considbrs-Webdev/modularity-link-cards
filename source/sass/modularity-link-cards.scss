@@ -42,17 +42,14 @@
         display: flex;
         align-items: stretch;
         background-color: transparent;
-        border: 2px dashed #a8d4e6;
-        border-radius: 0.5rem;
         text-decoration: none;
         color: inherit;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        transition: box-shadow 0.2s ease;
         overflow: hidden;
         min-height: 5.5rem;
         
         &:hover,
         &:focus {
-            border-color: #5bb3d4;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             text-decoration: none;
         }
