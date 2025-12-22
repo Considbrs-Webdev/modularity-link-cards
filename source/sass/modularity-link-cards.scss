@@ -1,0 +1,101 @@
+.mod-link-cards {
+    // Grid layout
+    &__grid {
+        display: grid;
+        gap: 1rem;
+        
+        &--2 {
+            grid-template-columns: repeat(1, 1fr);
+            
+            @media (min-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        &--3 {
+            grid-template-columns: repeat(1, 1fr);
+            
+            @media (min-width: 576px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            @media (min-width: 992px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        &--4 {
+            grid-template-columns: repeat(1, 1fr);
+            
+            @media (min-width: 576px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            @media (min-width: 992px) {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    }
+    
+    // Card styles
+    &__card {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: #fff;
+        border: 2px dashed #ccc;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        
+        &:hover,
+        &:focus {
+            border-color: #999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+        
+        &:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+    }
+    
+    // Icon wrapper
+    &__icon-wrapper {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.25rem;
+        
+        .c-icon {
+            color: #fff;
+        }
+    }
+    
+    // Content area
+    &__content {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    // Title
+    &__title {
+        margin: 0 0 0.25rem 0;
+        font-weight: 700;
+        color: #1a1a1a;
+    }
+    
+    // Description
+    &__description {
+        margin: 0;
+        color: #666;
+        font-size: 0.9375rem;
+        line-height: 1.4;
+    }
+}

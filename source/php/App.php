@@ -1,6 +1,6 @@
 <?php
 
-namespace ModularityBoilerplate;
+namespace ModularityLinkCards;
 
 /**
  * Class App
@@ -8,7 +8,7 @@ namespace ModularityBoilerplate;
  * Main application bootstrap class.
  * Initialize your plugin components here.
  * 
- * @package ModularityBoilerplate
+ * @package ModularityLinkCards
  */
 class App
 {
@@ -31,8 +31,8 @@ class App
     {
         if (function_exists('modularity_register_module')) {
             modularity_register_module(
-                MODULARITYBOILERPLATE_MODULE_PATH,
-                'Boilerplate',
+                MODULARITYLINKCARDS_MODULE_PATH,
+                'LinkCards',
             );
         }
     }

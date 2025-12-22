@@ -1,18 +1,18 @@
 {
-    "name": "@helsingborg-stad/modularity-boilerplate",
+    "name": "@helsingborg-stad/modularity-link-cards",
     "version": "1.0.0",
-    "description": "Modularity Boilerplate Module",
+    "description": "Modularity LinkCards Module",
     "main": "",
     "repository": {
         "type": "git",
-        "url": "https://github.com/helsingborg-stad/modularity-boilerplate"
+        "url": "https://github.com/helsingborg-stad/modularity-link-cards"
     },
     "author": "Starter",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/helsingborg-stad/modularity-boilerplate/issues"
+        "url": "https://github.com/helsingborg-stad/modularity-link-cards/issues"
     },
-    "homepage": "https://github.com/helsingborg-stad/modularity-boilerplate",
+    "homepage": "https://github.com/helsingborg-stad/modularity-link-cards",
     "scripts": {
         "test": "jest --coverage --maxWorkers=50%",
         "dev": "vite",

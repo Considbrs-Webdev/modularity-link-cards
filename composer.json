@@ -1,12 +1,12 @@
 {
-    "name": "helsingborg-stad/modularity-boilerplate",
-    "description": "Modularity Boilerplate Module",
+    "name": "helsingborg-stad/modularity-link-cards",
+    "description": "Modularity LinkCards Module",
     "type": "wordpress-plugin",
     "license": "MIT",
     "authors": [
         {
             "name": "Starter",
-            "email": "starter@helsingborg.se"
+            "email": "viktor.schultz@consid.se"
         }
     ],
     "minimum-stability": "dev",
@@ -41,7 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ModularityBoilerplate\\": "source/php/"
+            "ModularityLinkCards\\": "source/php/"
         }
     },
     "config": {
