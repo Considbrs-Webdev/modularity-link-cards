@@ -51,6 +51,16 @@ class LinkCards extends \Modularity\Module
     ];
 
     /**
+     * Color theme to icon CSS class mappings
+     */
+    private const ICON_COLOR_CLASSES = [
+        '764a0f' => 'mod-link-cards__icon--brown',
+        '233b1f' => 'mod-link-cards__icon--dark-green',
+        'a0b990' => 'mod-link-cards__icon--light-green',
+        'ba8a48' => 'mod-link-cards__icon--gold',
+    ];
+
+    /**
      * Prepare cards data for the template
      * 
      * @param array $cards Raw cards from ACF
@@ -70,6 +80,7 @@ class LinkCards extends \Modularity\Module
             
             $bgColor = '#' . $colorTheme;
             $iconColor = '#' . (self::COLOR_THEMES[$colorTheme] ?? 'e7d6bf');
+            $iconClass = self::ICON_COLOR_CLASSES[$colorTheme] ?? 'mod-link-cards__icon--brown';
             
             return [
                 'title' => $card['title'] ?? '',
@@ -78,6 +89,7 @@ class LinkCards extends \Modularity\Module
                 'icon' => $card['icon'] ?? '',
                 'iconBackgroundColor' => $bgColor,
                 'iconColor' => $iconColor,
+                'iconClass' => $iconClass,
             ];
         }, $cards);
     }

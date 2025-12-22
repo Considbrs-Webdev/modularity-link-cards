@@ -69,18 +69,38 @@
         justify-content: center;
         width: 7rem;
         padding: 1.25rem;
-        background-color: #7B5B3C; // Default fallback color
+        background-color: #764a0f; // Default fallback color
         
-        .c-icon {
-            color: #fff;
+        // Target all icon types with high specificity
+        .c-icon,
+        .c-icon.c-icon--material,
+        [class*="material-symbols"],
+        .fa,
+        [class*="fa-"] {
             font-size: 2rem;
-            
-            svg {
-                width: 2.5rem;
-                height: 2.5rem;
-                fill: currentColor;
-            }
         }
+        
+        .c-icon svg {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    }
+    
+    // Icon color classes
+    &__icon--brown {
+        color: #e7d6bf !important;
+    }
+    
+    &__icon--dark-green {
+        color: #a0b990 !important;
+    }
+    
+    &__icon--light-green {
+        color: #2b512b !important;
+    }
+    
+    &__icon--gold {
+        color: #5f3a0b !important;
     }
     
     // Content area

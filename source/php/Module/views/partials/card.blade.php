@@ -1,30 +1,16 @@
-@php
-    $linkUrl = $card['link']['url'] ?? '#';
-    $linkTarget = $card['link']['target'] ?? '_self';
-    $hasIcon = !empty($card['icon']);
-    $iconBgColor = $card['iconBackgroundColor'] ?? '#764a0f';
-    $iconColor = $card['iconColor'] ?? '#e7d6bf';
-@endphp
-
-<a 
-    href="{{ $linkUrl }}" 
-    target="{{ $linkTarget }}"
-    class="mod-link-cards__card"
-    @if($linkTarget === '_blank')
-        rel="noopener noreferrer"
-    @endif
->
-    <div class="mod-link-cards__icon-wrapper" style="background-color: {{ $iconBgColor }};">
-        @if ($hasIcon)
+<a href="{{ $card['link']['url'] ?? '#' }}" target="{{ $card['link']['target'] ?? '_self' }}" class="mod-link-cards__card"
+    @if (($card['link']['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif>
+    <div class="mod-link-cards__icon-wrapper" style="background-color: {{ $card['iconBackgroundColor'] }};">
+        @if (!empty($card['icon']))
             @icon([
                 'icon' => $card['icon'],
                 'size' => 'lg',
-                'color' => $iconColor
+                'classList' => [$card['iconClass']]
             ])
             @endicon
         @endif
     </div>
-    
+
     <div class="mod-link-cards__content">
         @if (!empty($card['title']))
             @typography([
@@ -35,7 +21,7 @@
                 {{ $card['title'] }}
             @endtypography
         @endif
-        
+
         @if (!empty($card['description']))
             @typography([
                 'element' => 'p',
@@ -46,4 +32,3 @@
         @endif
     </div>
 </a>
-
