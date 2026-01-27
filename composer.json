@@ -1,36 +1,22 @@
 {
-    "name": "helsingborg-stad/modularity-link-cards",
+    "name": "considbrs-webdev/modularity-link-cards",
     "description": "Modularity LinkCards Module",
     "type": "wordpress-plugin",
     "license": "MIT",
     "authors": [
         {
-            "name": "Starter",
-            "email": "viktor.schultz@consid.se"
+            "name": "Consid Borås AB",
+            "email": "webdev.boras@consid.se"
         }
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "extra": {
-        "installer-paths": {
-            "vendor/{$vendor}/{$name}": [
-                "type:wordpress-muplugin",
-                "type:wordpress-theme",
-                "type:wordpress-plugin",
-                "type:acf-plugin"
-            ]
-        }
-    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html .coverage/html --coverage-clover .coverage/clover.xml",
         "lint": "vendor/bin/mago lint",
         "fix": "vendor/bin/mago lint --format-after-fix --fix",
         "format": "vendor/bin/mago fmt"
-    },
-    "require": {
-        "helsingborg-stad/wpservice": "^2.0",
-        "helsingborg-stad/wputilservice": "^0.2.44"
     },
     "suggest": {
         "helsingborg-stad/municipio": "^6.0.0"
