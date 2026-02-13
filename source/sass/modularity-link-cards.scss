@@ -1,4 +1,5 @@
 .mod-link-cards {
+    --link-card-background-color: var(--color-white);
     // Grid layout
     &__grid {
         display: grid;
@@ -41,7 +42,7 @@
     &__card {
         display: flex;
         align-items: stretch;
-        background-color: transparent;
+        background-color: var(--link-card-background-color);
         text-decoration: none;
         color: inherit;
         border-radius: 12px;
