@@ -4,12 +4,13 @@
         @if (($card['link']['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif
     @endif
     class="mod-link-cards__card">
-    <div class="mod-link-cards__icon-wrapper" style="background-color: {{ $card['iconBackgroundColor'] }};">
+    <div class="mod-link-cards__icon-wrapper"
+        style="background-color:{{ $card['iconBackgroundColor'] }};color:{{ $card['iconColor'] }};">
         @if (!empty($card['icon']))
             @icon([
                 'icon' => $card['icon'],
                 'size' => 'lg',
-                'classList' => [$card['iconClass']]
+                'classList' => ['mod-link-cards__icon']
             ])
             @endicon
         @endif

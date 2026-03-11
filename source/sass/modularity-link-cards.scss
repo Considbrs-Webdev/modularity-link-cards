@@ -1,137 +1,125 @@
 .mod-link-cards {
-    --link-card-background-color: var(--color-white);
-    // Grid layout
-    &__grid {
-        display: grid;
-        gap: 1.5rem;
-        
-        &--2 {
-            grid-template-columns: 1fr;
-            
-            @media (min-width: 768px) {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        &--3 {
-            grid-template-columns: 1fr;
-            
-            @media (min-width: 576px) {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            @media (min-width: 992px) {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        &--4 {
-            grid-template-columns: 1fr;
-            
-            @media (min-width: 576px) {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            @media (min-width: 992px) {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+  --link-card-background-color: var(--color-white);
+  // Grid layout
+  &__grid {
+    display: grid;
+    gap: 1.5rem;
+
+    &--2 {
+      grid-template-columns: 1fr;
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-    
-    // Card styles
-    &__card {
-        display: flex;
-        align-items: stretch;
-        background-color: var(--link-card-background-color);
-        text-decoration: none;
-        color: inherit;
-        border-radius: 12px;
-        overflow: hidden;
-        min-height: 5.5rem;
+
+    &--3 {
+      grid-template-columns: 1fr;
+
+      @media (min-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
-    
-    // Hover/focus styles only for linked cards
-    a#{&}__card {
-        transition: box-shadow 0.2s ease;
-        
-        &:hover,
-        &:focus {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            text-decoration: none;
-        }
-        
-        &:focus {
-            outline: 2px solid #005fcc;
-            outline-offset: 2px;
-        }
+
+    &--4 {
+      grid-template-columns: 1fr;
+
+      @media (min-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 992px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
-    
-    // Icon wrapper - fills full height of card
-    &__icon-wrapper {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 7rem;
-        padding: 1.25rem;
-        background-color: #764a0f; // Default fallback color
-        
-        // Target all icon types with high specificity
-        .c-icon,
-        .c-icon.c-icon--material,
-        [class*="material-symbols"],
-        .fa,
-        [class*="fa-"] {
-            font-size: 2rem;
-        }
-        
-        .c-icon svg {
-            width: 2.5rem;
-            height: 2.5rem;
-        }
+  }
+
+  // Card styles
+  &__card {
+    display: flex;
+    align-items: stretch;
+    background-color: var(--link-card-background-color);
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 5.5rem;
+  }
+
+  // Hover/focus styles only for linked cards
+  a#{&}__card {
+    transition: box-shadow 0.2s ease;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      text-decoration: none;
     }
-    
-    // Icon color classes
-    &__icon--brown {
-        color: #e7d6bf !important;
+
+    &:focus {
+      outline: 2px solid #005fcc;
+      outline-offset: 2px;
     }
-    
-    &__icon--dark-green {
-        color: #a0b990 !important;
+  }
+
+  // Icon wrapper - fills full height of card
+  &__icon-wrapper {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7rem;
+    padding: 1.25rem;
+    background-color: #764a0f; // Default fallback color
+
+    // Target all icon types with high specificity
+    .c-icon,
+    .c-icon.c-icon--material,
+    [class*="material-symbols"],
+    .fa,
+    [class*="fa-"] {
+      font-size: 2rem;
     }
-    
-    &__icon--light-green {
-        color: #2b512b !important;
+
+    .c-icon svg {
+      width: 2.5rem;
+      height: 2.5rem;
     }
-    
-    &__icon--gold {
-        color: #5f3a0b !important;
-    }
-    
-    // Content area
-    &__content {
-        flex: 1;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 1.8rem 1.5rem;
-    }
-    
-    // Title
-    &__title {
-        margin: 0 0 0.25rem 0;
-        font-weight: 700;
-        color: #1a1a1a;
-        font-size: 1.125rem;
-        line-height: 1.3;
-    }
-    
-    // Description
-    &__description {
-        margin: 0;
-        color: #555;
-        font-size: 0.9375rem;
-        line-height: 1.5;
-    }
+  }
+
+  // Icon (colour applied inline via style attribute)
+  &__icon {
+    pointer-events: none;
+  }
+
+  // Content area
+  &__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.8rem 1.5rem;
+  }
+
+  // Title
+  &__title {
+    margin: 0 0 0.25rem 0;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 1.125rem;
+    line-height: 1.3;
+  }
+
+  // Description
+  &__description {
+    margin: 0;
+    color: #555;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
 }

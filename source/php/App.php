@@ -3,6 +3,7 @@
 namespace ModularityLinkCards;
 
 use ModularityLinkCards\Helper\CacheBust;
+use ModularityLinkCards\AcfFields\ColorThemeField;
 
 /**
  * Class App
@@ -21,6 +22,19 @@ class App
 
         // Enqueue styles
         add_action('wp_enqueue_scripts', [$this, 'enqueueStyles']);
+
+        // Register custom ACF field type
+        add_action('acf/include_field_types', [$this, 'registerAcfFields']);
+    }
+
+    /**
+     * Register custom ACF field types
+     *
+     * @return void
+     */
+    public function registerAcfFields(): void
+    {
+        new ColorThemeField();
     }
 
     /**

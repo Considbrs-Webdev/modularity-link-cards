@@ -26,11 +26,8 @@ class LinkCards extends \Modularity\Module
      */
     public function data(): array
     {
-        $data = [];
-
         // Append field config
-        $fields = \Modularity\Helper\FormatObject::camelCase($this->getFields());
-        $data = array_merge($data, (array) $fields);
+        $data = $this->getFields();
 
         // Process cards data
         $data['cards'] = $this->prepareCards($data['cards'] ?? []);
@@ -42,22 +39,13 @@ class LinkCards extends \Modularity\Module
 
     /**
      * Color theme mappings: background color => icon color
+     * Kept for backward-compatibility when old string values are stored.
      */
-    private const COLOR_THEMES = [
+    private const LEGACY_COLOR_THEMES = [
         '764a0f' => 'e7d6bf',
         '233b1f' => 'a0b990',
         'a0b990' => '2b512b',
         'ba8a48' => '5f3a0b',
-    ];
-
-    /**
-     * Color theme to icon CSS class mappings
-     */
-    private const ICON_COLOR_CLASSES = [
-        '764a0f' => 'mod-link-cards__icon--brown',
-        '233b1f' => 'mod-link-cards__icon--dark-green',
-        'a0b990' => 'mod-link-cards__icon--light-green',
-        'ba8a48' => 'mod-link-cards__icon--gold',
     ];
 
     /**
@@ -73,30 +61,70 @@ class LinkCards extends \Modularity\Module
         }
 
         return array_map(function ($card) {
-            // Handle both camelCase and snake_case field names
-            $colorTheme = $card['colorTheme'] 
-                ?? $card['color_theme'] 
-                ?? '764a0f';
-            
-            $bgColor = '#' . $colorTheme;
-            $iconColor = '#' . (self::COLOR_THEMES[$colorTheme] ?? 'e7d6bf');
-            $iconClass = self::ICON_COLOR_CLASSES[$colorTheme] ?? 'mod-link-cards__icon--brown';
-            
-            $link = $card['link'] ?? [];
+            $colorThemeRaw = $card['color_theme'] ?? '';
+
+            [$bgColor, $iconColor] = $this->resolveColors($colorThemeRaw);
+
+            $link    = $card['link'] ?? [];
             $hasLink = !empty($link['url']);
-            
+
             return [
-                'title' => $card['title'] ?? '',
-                'description' => $card['description'] ?? '',
-                'link' => $link,
-                'hasLink' => $hasLink,
-                'tag' => $hasLink ? 'a' : 'div',
-                'icon' => $card['icon'] ?? '',
+                'title'              => $card['title'] ?? '',
+                'description'        => $card['description'] ?? '',
+                'link'               => $link,
+                'hasLink'            => $hasLink,
+                'tag'                => $hasLink ? 'a' : 'div',
+                'icon'               => $card['icon'] ?? '',
                 'iconBackgroundColor' => $bgColor,
-                'iconColor' => $iconColor,
-                'iconClass' => $iconClass,
+                'iconColor'          => $iconColor,
             ];
         }, $cards);
+    }
+
+    /**
+     * Resolve background and icon colours from the stored field value.
+     *
+     * Accepts:
+     *  - JSON string  {"mode":"theme","theme":"brown","backgroundColor":"#764a0f","iconColor":"#e7d6bf"}
+     *  - JSON string  {"mode":"custom","backgroundColor":"#aabbcc","iconColor":"#112233"}
+     *  - Array already decoded by ACF format_value
+     *  - Legacy plain hex string (backward-compat) e.g. "764a0f"
+     *
+     * @param mixed $raw
+     * @return array{string, string}  [bgHex, iconHex]
+     */
+    private function resolveColors(mixed $raw): array
+    {
+        // Already decoded by ACF format_value hook (array)
+        if (is_array($raw)) {
+            $bg   = $raw['backgroundColor'] ?? '#764a0f';
+            $icon = $raw['iconColor']       ?? '#e7d6bf';
+            return [$this->ensureHash($bg), $this->ensureHash($icon)];
+        }
+
+        // JSON string
+        if (is_string($raw) && str_starts_with(trim($raw), '{')) {
+            $decoded = json_decode($raw, true);
+            if (is_array($decoded)) {
+                $bg   = $decoded['backgroundColor'] ?? '#764a0f';
+                $icon = $decoded['iconColor']       ?? '#e7d6bf';
+                return [$this->ensureHash($bg), $this->ensureHash($icon)];
+            }
+        }
+
+        // Fallback
+        return ['#764a0f', '#e7d6bf'];
+    }
+
+    /**
+     * Ensure a colour string has a leading #.
+     */
+    private function ensureHash(string $color): string
+    {
+        if ($color !== '' && $color[0] !== '#') {
+            return '#' . $color;
+        }
+        return $color;
     }
 
     /**

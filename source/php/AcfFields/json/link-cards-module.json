@@ -137,23 +137,16 @@
                         "label": "Color Theme",
                         "name": "color_theme",
                         "aria-label": "",
-                        "type": "select",
-                        "instructions": "Select a color theme for the card icon.",
+                        "type": "link_cards_color_theme",
+                        "instructions": "Choose a predefined theme or set custom background and icon colors.",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
-                            "width": "50",
+                            "width": "",
                             "class": "",
                             "id": ""
                         },
-                        "choices": {
-                            "764a0f": "Brown (bg: #764a0f, icon: #e7d6bf)",
-                            "233b1f": "Dark Green (bg: #233b1f, icon: #a0b990)",
-                            "a0b990": "Light Green (bg: #a0b990, icon: #2b512b)",
-                            "ba8a48": "Gold (bg: #ba8a48, icon: #5f3a0b)"
-                        },
-                        "default_value": "764a0f",
-                        "return_format": "value",
+                        "default_value": "",
                         "multiple": 0,
                         "allow_null": 0,
                         "ui": 0,

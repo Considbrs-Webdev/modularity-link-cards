@@ -1,0 +1,273 @@
+/**
+ * Admin styles for the Color Theme Picker ACF field
+ */
+
+.lc-color-theme-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem 0;
+
+  &__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    color: #1d2327;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+
+    &--preview {
+      margin-top: 0.25rem;
+    }
+
+    &--themes {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  // ── Predefined theme swatches ──────────────────────────────────────────
+
+  &__theme-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__theme-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0.35rem;
+    transition: border-color 0.15s;
+
+    &:hover {
+      border-color: #2271b1;
+    }
+
+    &.is-selected {
+      border-color: #2271b1;
+      background-color: #f0f6fc;
+    }
+  }
+
+  &__swatch-preview {
+    width: 52px;
+    height: 52px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+
+    .fa {
+      pointer-events: none;
+    }
+
+    &--custom {
+      border: 2px dashed #999;
+    }
+  }
+
+  &__swatch-label {
+    font-size: 0.75rem;
+    color: #50575e;
+    max-width: 60px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  // ── Custom colour panel ────────────────────────────────────────────────
+
+  &__custom-panel {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+
+    &.is-visible {
+      display: flex;
+    }
+  }
+
+  // ── Group selector ─────────────────────────────────────────────────────
+
+  &__group-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  &__group-btn {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.82rem;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    color: #1d2327;
+    transition:
+      border-color 0.12s,
+      background 0.12s,
+      color 0.12s;
+
+    &:hover {
+      border-color: #2271b1;
+      color: #2271b1;
+    }
+
+    &.is-selected {
+      border-color: #2271b1;
+      background: #2271b1;
+      color: #fff;
+    }
+
+    &--purely-custom {
+      border-style: dashed;
+
+      &.is-selected {
+        border-style: dashed;
+      }
+    }
+  }
+
+  // ── Per-group swatch panels ────────────────────────────────────────────
+
+  &__group-panel {
+    display: none;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    &.is-visible {
+      display: flex;
+    }
+  }
+
+  // ── Purely-custom (native colour inputs) panel ─────────────────────────
+
+  &__purely-custom-panel {
+    display: none;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    &.is-visible {
+      display: flex;
+    }
+  }
+
+  // ── Live preview ───────────────────────────────────────────────────────
+
+  &__preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+
+// ── Colour picker sub-widget ─────────────────────────────────────────────────
+
+.lc-color-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__group-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #50575e;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  &__group-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  &__swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    transition:
+      border-color 0.1s,
+      transform 0.1s;
+
+    &:hover {
+      border-color: #2271b1;
+      transform: scale(1.15);
+      z-index: 1;
+    }
+
+    &.is-selected {
+      border-color: #2271b1;
+      box-shadow: 0 0 0 2px #fff inset;
+    }
+  }
+
+  &__hex-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__native-input {
+    width: 36px;
+    height: 30px;
+    padding: 0 2px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+    flex-shrink: 0;
+  }
+
+  &__hex-input {
+    width: 100px;
+    font-family: monospace;
+    font-size: 0.85rem;
+  }
+
+  &__hex-preview {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    border: 1px solid #c3c4c7;
+    flex-shrink: 0;
+  }
+}
