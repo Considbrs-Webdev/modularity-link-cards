@@ -84,7 +84,14 @@ interface FieldValue {
     // ── Internal helpers ────────────────────────────────────────────────
 
     function persist(): void {
-      $wrap.find(".lc-color-theme-field__value").val(JSON.stringify(current));
+      const $input = $wrap.find(".lc-color-theme-field__value");
+      $input.val(JSON.stringify(current));
+      // Notify ACF (and the Gutenberg block layer, which serialises form
+      // values into block attributes on input/change events) that the hidden
+      // input's value has changed. Without this, setting .val() directly
+      // leaves the block-attribute cache stale and saves will write the
+      // pre-edit value for every repeater row.
+      $input.trigger("change");
     }
 
     function applyPreview(): void {
