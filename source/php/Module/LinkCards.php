@@ -73,7 +73,6 @@ class LinkCards extends \Modularity\Module
                 'description'        => $card['description'] ?? '',
                 'link'               => $link,
                 'hasLink'            => $hasLink,
-                'tag'                => $hasLink ? 'a' : 'div',
                 'icon'               => $card['icon'] ?? '',
                 'iconBackgroundColor' => $bgColor,
                 'iconColor'          => $iconColor,

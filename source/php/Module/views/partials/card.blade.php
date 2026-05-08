@@ -1,9 +1,4 @@
-<{{ $card['tag'] }}
-    @if ($card['hasLink']) href="{{ $card['link']['url'] }}"
-        target="{{ $card['link']['target'] ?? '_self' }}"
-        @if (($card['link']['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif
-    @endif
-    class="mod-link-cards__card">
+<li class="mod-link-cards__card">
     <div class="mod-link-cards__icon-wrapper"
         style="background-color:{{ $card['iconBackgroundColor'] }};color:{{ $card['iconColor'] }};">
         @if (!empty($card['icon']))
@@ -23,7 +18,13 @@
                 'variant' => 'h4',
                 'classList' => ['mod-link-cards__title']
             ])
-                {{ $card['title'] }}
+                @if ($card['hasLink'])
+                    <a href="{{ $card['link']['url'] }}" target="{{ $card['link']['target'] ?? '_self' }}"
+                        @if (($card['link']['target'] ?? '_self') === '_blank') rel="noopener noreferrer" @endif
+                        class="mod-link-cards__link">{{ $card['title'] }}</a>
+                @else
+                    {{ $card['title'] }}
+                @endif
             @endtypography
         @endif
 
@@ -36,4 +37,4 @@
             @endtypography
         @endif
     </div>
-    </{{ $card['tag'] }}>
+</li>
