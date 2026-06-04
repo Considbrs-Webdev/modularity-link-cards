@@ -4,6 +4,7 @@
   &__grid {
     display: grid;
     gap: 1.5rem;
+    padding-left: 0;
 
     &--2 {
       grid-template-columns: 1fr;
