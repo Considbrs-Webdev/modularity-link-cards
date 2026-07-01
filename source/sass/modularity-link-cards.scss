@@ -57,11 +57,25 @@
 
   &__card:has(.mod-link-cards__link:hover) {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    .mod-link-cards__link {
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-decoration-skip-ink: auto;
+      text-underline-offset: 0.12em;
+    }
   }
 
   &__card:has(.mod-link-cards__link:focus-visible) {
     outline: 2px solid #005fcc;
     outline-offset: 2px;
+
+    .mod-link-cards__link {
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-decoration-skip-ink: auto;
+      text-underline-offset: 0.12em;
+    }
   }
 
   &__link {
