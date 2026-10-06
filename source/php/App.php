@@ -25,7 +25,6 @@ class App
 
         // Iframed block canvas. enqueue_block_editor_assets never reaches the preview.
         add_action('enqueue_block_assets', [$this, 'addEditorStyles']);
-        add_filter('Pitea/Editor/ModuleStyles', [$this, 'registerEditorStyle']);
 
         // Register custom ACF field type
         add_action('acf/include_field_types', [$this, 'registerAcfFields']);
@@ -52,29 +51,13 @@ class App
     }
 
     /**
-     * Register the module stylesheet for the shared editor-canvas loader.
-     *
-     * @param array<string, string> $styles
-     * @return array<string, string>
-     */
-    public function registerEditorStyle(array $styles): array
-    {
-        $url = $this->stylesheetUrl();
-        if ($url !== '') {
-            $styles['modularity-link-cards'] = $url;
-        }
-
-        return $styles;
-    }
-
-    /**
      * Enqueue the module stylesheet inside the block editor iframe.
      *
      * @return void
      */
     public function addEditorStyles(): void
     {
-        if (!is_admin() || wp_style_is('modularity-link-cards', 'enqueued')) {
+        if (!is_admin()) {
             return;
         }
 
