@@ -23,8 +23,9 @@ class App
         // Enqueue styles
         add_action('wp_enqueue_scripts', [$this, 'enqueueStyles']);
 
-        // Block / Gutenberg editor — match frontend module appearance
-        add_action('enqueue_block_editor_assets', [$this, 'addEditorStyles']);
+        // Iframed block canvas. enqueue_block_editor_assets never reaches the preview.
+        add_action('enqueue_block_assets', [$this, 'addEditorStyles']);
+        add_filter('Pitea/Editor/ModuleStyles', [$this, 'registerEditorStyle']);
 
         // Register custom ACF field type
         add_action('acf/include_field_types', [$this, 'registerAcfFields']);
@@ -47,33 +48,65 @@ class App
      */
     public function enqueueStyles(): void
     {
-        $styleFile = CacheBust::name('css/modularity-link-cards.css');
-
-        if ($styleFile) {
-            wp_enqueue_style(
-                'modularity-link-cards',
-                MODULARITYLINKCARDS_URL . '/assets/dist/' . $styleFile,
-                [],
-                null
-            );
-        }
+        $this->enqueueStylesheet();
     }
 
     /**
-     * Enqueue the same built CSS in the block editor as on the frontend.
+     * Register the module stylesheet for the shared editor-canvas loader.
+     *
+     * @param array<string, string> $styles
+     * @return array<string, string>
+     */
+    public function registerEditorStyle(array $styles): array
+    {
+        $url = $this->stylesheetUrl();
+        if ($url !== '') {
+            $styles['modularity-link-cards'] = $url;
+        }
+
+        return $styles;
+    }
+
+    /**
+     * Enqueue the module stylesheet inside the block editor iframe.
+     *
+     * @return void
      */
     public function addEditorStyles(): void
     {
-        $styleFile = CacheBust::name('css/modularity-link-cards.css');
-
-        if ($styleFile) {
-            wp_enqueue_style(
-                'modularity-link-cards',
-                MODULARITYLINKCARDS_URL . '/assets/dist/' . $styleFile,
-                [],
-                null
-            );
+        if (!is_admin() || wp_style_is('modularity-link-cards', 'enqueued')) {
+            return;
         }
+
+        $this->enqueueStylesheet();
+    }
+
+    /**
+     * Built stylesheet URL, or an empty string when the Vite manifest has no entry.
+     */
+    private function stylesheetUrl(): string
+    {
+        $styleFile = CacheBust::name('css/modularity-link-cards.css');
+        if (!$styleFile) {
+            return '';
+        }
+
+        return MODULARITYLINKCARDS_URL . '/assets/dist/' . $styleFile;
+    }
+
+    /**
+     * Enqueue the built module stylesheet.
+     *
+     * @return void
+     */
+    private function enqueueStylesheet(): void
+    {
+        $url = $this->stylesheetUrl();
+        if ($url === '') {
+            return;
+        }
+
+        wp_enqueue_style('modularity-link-cards', $url, [], null);
     }
 
     /**
