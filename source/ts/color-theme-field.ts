@@ -90,8 +90,13 @@ interface FieldValue {
       // values into block attributes on input/change events) that the hidden
       // input's value has changed. Without this, setting .val() directly
       // leaves the block-attribute cache stale and saves will write the
-      // pre-edit value for every repeater row.
+      // pre-edit value for every repeater row. The v3 expanded editor listens
+      // with addEventListener, which jQuery's trigger does not reach.
       $input.trigger("change");
+      const input = $input.get(0) as HTMLInputElement | undefined;
+      if (input) {
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
     }
 
     function applyPreview(): void {
@@ -469,10 +474,15 @@ interface FieldValue {
   }
 
   // ── ACF lifecycle: run on every field render ─────────────────────────────
+  // Block editor v1/v2 and the classic module editor fire "ready" and "append".
+  // The v3 expanded editor injects the form with "remount" and does not fire
+  // "append", so the same init has to run there too. The lc-initialized guard
+  // still drops a second pass over the same nodes.
 
   if (typeof acf !== "undefined") {
-    acf.add_action("ready append", function ($el: any) {
-      $el.find(".lc-color-theme-field").each(function (this: HTMLElement) {
+    acf.add_action("ready append remount", function ($el: any) {
+      const $root = $el && typeof $el.find === "function" ? $el : $(document);
+      $root.find(".lc-color-theme-field").each(function (this: HTMLElement) {
         initField($(this));
       });
     });
