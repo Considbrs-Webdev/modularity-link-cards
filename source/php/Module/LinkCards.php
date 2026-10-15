@@ -33,8 +33,9 @@ class LinkCards extends \Modularity\Module
         $data = array_merge($data, (array) $fields);
 
         // Process cards data
-        $data['cards'] = $this->prepareCards($data['cards'] ?? []);
-        $data['columns'] = $data['columns'] ?? '2';
+        // ACF returns false (not an empty array) when the repeater has never been saved
+        $data['cards'] = $this->prepareCards(is_array($data['cards'] ?? null) ? $data['cards'] : []);
+        $data['columns'] = !empty($data['columns']) && is_scalar($data['columns']) ? (string) $data['columns'] : '2';
         $data['gridClass'] = $this->getGridClass($data['columns']);
 
         return $data;
