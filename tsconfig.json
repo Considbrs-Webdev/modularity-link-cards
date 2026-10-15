@@ -9,7 +9,15 @@
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"skipLibCheck": true,
-		"lib": ["ES2021", "DOM", "DOM.Iterable"]
+		"lib": [
+			"ES2021",
+			"DOM",
+			"DOM.Iterable"
+		]
 	},
-	"include": ["source/js/**/*", "global.d.ts"]
+	"include": [
+		"source/js/**/*",
+		"source/ts/**/*",
+		"global.d.ts"
+	]
 }
