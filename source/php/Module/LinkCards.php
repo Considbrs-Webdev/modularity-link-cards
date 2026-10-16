@@ -21,18 +21,20 @@ class LinkCards extends \Modularity\Module
     }
 
     /**
-     * Data array
-     * @return array $data
+     * View data for the module.
+     *
+     * ACF returns false or an empty string for a repeater with no rows, and
+     * may return the columns select as an int. Both are normalised before use.
+     *
+     * @return array<string, mixed>
      */
     public function data(): array
     {
-        // Append field config
         $data = $this->getFields();
 
-        // Process cards data
-        // ACF returns false (not an empty array) when the repeater has never been saved
-        $data['cards'] = $this->prepareCards(is_array($data['cards'] ?? null) ? $data['cards'] : []);
-        $data['columns'] = !empty($data['columns']) && is_scalar($data['columns']) ? (string) $data['columns'] : '2';
+        $cards = $data['cards'] ?? null;
+        $data['cards'] = $this->prepareCards(is_array($cards) ? $cards : []);
+        $data['columns'] = $this->normalizeColumns($data['columns'] ?? null);
         $data['gridClass'] = $this->getGridClass($data['columns']);
 
         return $data;
@@ -61,24 +63,67 @@ class LinkCards extends \Modularity\Module
             return [];
         }
 
-        return array_map(function ($card) {
-            $colorThemeRaw = $card['color_theme'] ?? '';
+        $prepared = [];
 
+        foreach ($cards as $card) {
+            if (!is_array($card)) {
+                continue;
+            }
+
+            $colorThemeRaw = $card['color_theme'] ?? '';
             [$bgColor, $iconColor] = $this->resolveColors($colorThemeRaw);
 
-            $link    = $card['link'] ?? [];
-            $hasLink = !empty($link['url']);
+            $link = $card['link'] ?? [];
+            if (!is_array($link)) {
+                $link = [];
+            }
 
-            return [
-                'title'              => $card['title'] ?? '',
-                'description'        => $card['description'] ?? '',
-                'link'               => $link,
-                'hasLink'            => $hasLink,
-                'icon'               => $card['icon'] ?? '',
+            $icon = $card['icon'] ?? '';
+            if (!is_string($icon)) {
+                $icon = '';
+            }
+
+            $prepared[] = [
+                'title'               => is_string($card['title'] ?? null) ? $card['title'] : '',
+                'description'         => is_string($card['description'] ?? null) ? $card['description'] : '',
+                'link'                => $link,
+                'hasLink'             => !empty($link['url']),
+                'icon'                => $icon,
                 'iconBackgroundColor' => $bgColor,
-                'iconColor'          => $iconColor,
+                'iconColor'           => $iconColor,
             ];
-        }, $cards);
+        }
+
+        return $prepared;
+    }
+
+    /**
+     * Coerce the columns select to a grid key.
+     *
+     * ACF may return the choice as an int, or false when the field is empty.
+     *
+     * @param mixed $columns
+     * @return string
+     */
+    private function normalizeColumns(mixed $columns): string
+    {
+        $columns = is_scalar($columns) ? (string) $columns : '';
+
+        return isset($this->gridClasses()[$columns]) ? $columns : '2';
+    }
+
+    /**
+     * Grid modifier classes keyed by the columns field value.
+     *
+     * @return array<string, string>
+     */
+    private function gridClasses(): array
+    {
+        return [
+            '2' => 'o-grid--half',
+            '3' => 'o-grid--third',
+            '4' => 'o-grid--quarter',
+        ];
     }
 
     /**
@@ -97,18 +142,20 @@ class LinkCards extends \Modularity\Module
     {
         // Already decoded by ACF format_value hook (array)
         if (is_array($raw)) {
-            $bg   = $raw['backgroundColor'] ?? '#764a0f';
-            $icon = $raw['iconColor']       ?? '#e7d6bf';
-            return [$this->ensureHash($bg), $this->ensureHash($icon)];
+            return [
+                $this->colorOrDefault($raw['backgroundColor'] ?? null, '#764a0f'),
+                $this->colorOrDefault($raw['iconColor'] ?? null, '#e7d6bf'),
+            ];
         }
 
         // JSON string
         if (is_string($raw) && str_starts_with(trim($raw), '{')) {
             $decoded = json_decode($raw, true);
             if (is_array($decoded)) {
-                $bg   = $decoded['backgroundColor'] ?? '#764a0f';
-                $icon = $decoded['iconColor']       ?? '#e7d6bf';
-                return [$this->ensureHash($bg), $this->ensureHash($icon)];
+                return [
+                    $this->colorOrDefault($decoded['backgroundColor'] ?? null, '#764a0f'),
+                    $this->colorOrDefault($decoded['iconColor'] ?? null, '#e7d6bf'),
+                ];
             }
         }
 
@@ -117,13 +164,18 @@ class LinkCards extends \Modularity\Module
     }
 
     /**
-     * Ensure a colour string has a leading #.
+     * Return a hex colour, falling back when the stored value is empty or not a string.
      */
-    private function ensureHash(string $color): string
+    private function colorOrDefault(mixed $color, string $default): string
     {
-        if ($color !== '' && $color[0] !== '#') {
+        if (!is_string($color) || $color === '') {
+            return $default;
+        }
+
+        if ($color[0] !== '#') {
             return '#' . $color;
         }
+
         return $color;
     }
 
@@ -135,13 +187,7 @@ class LinkCards extends \Modularity\Module
      */
     private function getGridClass(string $columns): string
     {
-        $gridClasses = [
-            '2' => 'o-grid--half',
-            '3' => 'o-grid--third',
-            '4' => 'o-grid--quarter',
-        ];
-
-        return $gridClasses[$columns] ?? 'o-grid--half';
+        return $this->gridClasses()[$columns] ?? 'o-grid--half';
     }
 
     /**
