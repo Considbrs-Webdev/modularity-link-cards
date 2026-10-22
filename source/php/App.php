@@ -6,12 +6,7 @@ use ModularityLinkCards\Helper\CacheBust;
 use ModularityLinkCards\AcfFields\ColorThemeField;
 
 /**
- * Class App
- * 
- * Main application bootstrap class.
- * Initialize your plugin components here.
- * 
- * @package ModularityLinkCards
+ * Registers the module, enqueues its stylesheet, and loads the color theme field.
  */
 class App
 {

@@ -37,16 +37,14 @@ if (file_exists('package.json') && file_exists('package-lock.json')) {
 $removables = [
     '.gitignore',
     'build.php',
-    'vite.config.js',
     'vite.config.mjs',
     'tsconfig.json',
     'package.json',
     'package-lock.json',
-    'phpunit.xml.dist',
     'README.md',
     './node_modules/',
-    './source/js/',
     './source/sass/',
+    './source/ts/',
     'LICENSE',
 ];
 

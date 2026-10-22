@@ -1,6 +1,7 @@
 {
     "name": "considbrs-webdev/modularity-link-cards",
-    "description": "Modularity LinkCards Module",
+    "description": "A grid of clickable link cards with icons.",
+    "homepage": "https://github.com/Considbrs-Webdev/modularity-link-cards",
     "type": "wordpress-plugin",
     "license": "MIT",
     "authors": [

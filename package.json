@@ -1,18 +1,18 @@
 {
     "name": "@considbrs-webdev/modularity-link-cards",
     "version": "1.0.0",
-    "description": "Modularity LinkCards Module",
+    "description": "A grid of clickable link cards with icons.",
     "main": "",
     "repository": {
         "type": "git",
-        "url": "https://github.com/considbrs-webdev/modularity-link-cards"
+        "url": "https://github.com/Considbrs-Webdev/modularity-link-cards"
     },
     "author": "Consid Borås AB",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/considbrs-webdev/modularity-link-cards/issues"
+        "url": "https://github.com/Considbrs-Webdev/modularity-link-cards/issues"
     },
-    "homepage": "https://github.com/considbrs-webdev/modularity-link-cards",
+    "homepage": "https://github.com/Considbrs-Webdev/modularity-link-cards",
     "scripts": {
         "dev": "vite",
         "build": "vite build",

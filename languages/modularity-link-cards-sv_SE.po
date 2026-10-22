@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity LinkCards 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modularity-link-cards\n"
+"Report-Msgid-Bugs-To: https://github.com/Considbrs-Webdev/modularity-link-cards/issues\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,23 +20,24 @@ msgstr "Modularity Länkkort"
 
 #. Plugin URI of the plugin
 #: modularity-link-cards.php
-msgid "https://github.com/helsingborg-stad/modularity-link-cards"
-msgstr "https://github.com/helsingborg-stad/modularity-link-cards"
+msgid "https://github.com/Considbrs-Webdev/modularity-link-cards"
+msgstr "https://github.com/Considbrs-Webdev/modularity-link-cards"
 
 #. Description of the plugin
 #: modularity-link-cards.php
-msgid "A link-cards for creating Modularity modules."
-msgstr "Länkkort för att skapa Modularity-moduler."
+#: source/php/Module/LinkCards.php:20
+msgid "A grid of clickable link cards with icons."
+msgstr "Ett block med klickbara länkkort"
 
 #. Author of the plugin
 #: modularity-link-cards.php
-msgid "Starter"
-msgstr "Starter"
+msgid "Consid Borås AB"
+msgstr "Consid Borås AB"
 
 #. Author URI of the plugin
 #: modularity-link-cards.php
-msgid "https://github.com/helsingborg-stad"
-msgstr "https://github.com/helsingborg-stad"
+msgid "https://github.com/Considbrs-Webdev"
+msgstr "https://github.com/Considbrs-Webdev"
 
 #: source/php/AcfFields/php/link-cards-module.php:8
 msgid "LinkCards Module"
@@ -103,10 +104,6 @@ msgstr "Färgtema"
 #: source/php/Module/LinkCards.php:19
 msgid "Link Cards"
 msgstr "Länkkort"
-
-#: source/php/Module/LinkCards.php:20
-msgid "A grid of clickable link cards with icons."
-msgstr "Ett block med klickbara länkkort"
 
 #: source/php/AcfFields/ColorThemeField.php:64
 msgid "Brown"

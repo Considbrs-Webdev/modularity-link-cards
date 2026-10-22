@@ -1,9 +1,9 @@
-# Copyright (C) 2026 Starter
+# Copyright (C) 2026 Consid Borås AB
 # This file is distributed under the MIT.
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity LinkCards 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modularity-link-cards\n"
+"Report-Msgid-Bugs-To: https://github.com/Considbrs-Webdev/modularity-link-cards/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,22 +21,23 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: modularity-link-cards.php
-msgid "https://github.com/helsingborg-stad/modularity-link-cards"
+msgid "https://github.com/Considbrs-Webdev/modularity-link-cards"
 msgstr ""
 
 #. Description of the plugin
 #: modularity-link-cards.php
-msgid "A link-cards for creating Modularity modules."
+#: source/php/Module/LinkCards.php:20
+msgid "A grid of clickable link cards with icons."
 msgstr ""
 
 #. Author of the plugin
 #: modularity-link-cards.php
-msgid "Starter"
+msgid "Consid Borås AB"
 msgstr ""
 
 #. Author URI of the plugin
 #: modularity-link-cards.php
-msgid "https://github.com/helsingborg-stad"
+msgid "https://github.com/Considbrs-Webdev"
 msgstr ""
 
 #: source/php/AcfFields/ColorThemeField.php:64
@@ -164,8 +165,4 @@ msgstr ""
 #: source/php/Module/LinkCards.php:18
 #: source/php/Module/LinkCards.php:19
 msgid "Link Cards"
-msgstr ""
-
-#: source/php/Module/LinkCards.php:20
-msgid "A grid of clickable link cards with icons."
 msgstr ""

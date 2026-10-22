@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name:       Modularity LinkCards
- * Plugin URI:        https://github.com/helsingborg-stad/modularity-link-cards
- * Description:       A link-cards for creating Modularity modules.
+ * Plugin URI:        https://github.com/Considbrs-Webdev/modularity-link-cards
+ * Description:       A grid of clickable link cards with icons.
  * Version: 1.0.0
- * Author:            Starter
- * Author URI:        https://github.com/helsingborg-stad
+ * Author:            Consid Borås AB
+ * Author URI:        https://github.com/Considbrs-Webdev
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       modularity-link-cards
